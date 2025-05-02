@@ -1,0 +1,68 @@
+name: Compile and release
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PLUGIN_NAME: vehicles
+  SCRIPTS_PATH: addons/sourcemod/scripting
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        sm-version: [ '1.12.x' ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup SourcePawn Compiler ${{ matrix.sm-version }}
+        id: setup_sp
+        uses: rumblefrog/setup-sp@master
+        with:
+          version: ${{ matrix.sm-version }}
+          version-file: ${{ env.SCRIPTS_PATH }}/${{ env.PLUGIN_NAME }}.sp
+          define-name: PLUGIN_VERSION
+
+      - name: Compile plugin
+        run: |
+          mkdir -p ../plugins
+          spcomp -v2 -E -i "include" -o "../plugins/${{ env.PLUGIN_NAME }}.smx" "${{ env.PLUGIN_NAME }}.sp"
+          echo "=== OUT FILES ==="
+          ls ../plugins
+          echo "=== VERSION ==="
+          echo ${{ steps.setup_sp.outputs.plugin-version }}
+        working-directory: ${{ env.SCRIPTS_PATH }}
+
+      - name: Install zip utility
+        uses: montudor/action-zip@v1
+
+      - name: Zip output
+        run: |
+          zip -qq -r ${{ github.event.repository.name }}.zip addons/sourcemod
+
+      - name: List build outputs
+        run: |
+          echo "::group::Directory contents"
+          ls -R
+          echo "::endgroup::"
+          echo "::group::Zip contents"
+          unzip -l ${{ github.event.repository.name }}.zip
+          echo "::endgroup::"
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ steps.setup_sp.outputs.plugin-version }}
+          artifacts: ./${{ github.event.repository.name }}.zip
+          draft: true
+          allowUpdates: true
+          updateOnlyUnreleased: true
+          skipIfReleaseExists: true
