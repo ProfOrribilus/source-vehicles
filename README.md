@@ -22,7 +22,7 @@ This plugin bundles the required entity fixes, and a few configurable nice-to-ha
 
 ## Dependencies
 
-* SourceMod 1.11
+* SourceMod 1.12
 * [LoadSoundScript](https://github.com/haxtonsale/LoadSoundScript) (optional, used for vehicle sounds)
 
 ## Installation
