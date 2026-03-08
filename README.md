@@ -28,10 +28,9 @@ This plugin bundles the required entity fixes, and a few configurable nice-to-ha
 
 ## Installation
 
-1. Download the latest version
-2. Extract the contents of the ZIP file into your server's game directory
-3. Download the latest version of your game's vehicles (optional). [Here](https://gamebanana.com/mods/658462) the ones for Day of Defeat: Source
-4. Restart your server or type `sm plugins load vehicles` into your server console
+1. Download the latest version from the [releases](https://github.com/ProfOrribilus/source-vehicles/releases) page
+2. Extract the contents of the ZIP file(s) into your server's game directory
+3. Restart your server or type `sm plugins load vehicles` into your server console
 
 ## Usage
 
@@ -112,4 +111,8 @@ recommended** to keep the animations disabled.
 1. MGs can't be deployed while being on or inside a car.
 2. Nades and rockets launching is disabled for car passengers to avoid some still unresolved glitch.
 3. Entering and exiting a vehicle could get the player looking to a different direction.
-4. Vehicles sounds sometimes keep looping even if you are not driving them or if they are despawned/destroyed.
+4. Vehicles sounds sometimes keep looping even if you are not driving them or if they are despawned/destroyed. Use `snd_restart` on your client console to temporarily fix it (thanks to TVoLk for the tip).
+
+## Credits
+
+I wish to thank the following people who helped me in testing this plugin: [Glubtasticon](https://steamcommunity.com/id/Thiagales), [DNA.styks](https://steamcommunity.com/id/DNA-styx), [TVoLk](https://steamcommunity.com/profiles/76561198334480736), [dNky](https://steamcommunity.com/profiles/76561198127634836), [SkOosH](https://steamcommunity.com/profiles/76561197975135063).
