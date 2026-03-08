@@ -5,10 +5,7 @@ multiplayer games.
 
 **List of supported games:**
 
-* Team Fortress 2
-* Counter-Strike: Source
-* Black Mesa
-* Half-life 2: Deathmatch
+* Day of Defeat: Source
 
 This plugin bundles the required entity fixes, and a few configurable nice-to-have features.
 
@@ -18,6 +15,10 @@ This plugin bundles the required entity fixes, and a few configurable nice-to-ha
 * Vehicle sounds
 * Entry and exit animations (experimental)
 * Physics collisions and damage against other players
+* Vehicles are destroyable
+* Support for a second passenger who can shoot
+* Support for player models as passengers
+* Automatic vehicle respawn system
 * High customizability through plugin configuration and ConVars
 
 ## Dependencies
@@ -27,14 +28,17 @@ This plugin bundles the required entity fixes, and a few configurable nice-to-ha
 
 ## Installation
 
-1. Download the latest version from the [releases](https://github.com/Mikusch/source-vehicles/releases) page
+1. Download the latest version
 2. Extract the contents of the ZIP file into your server's game directory
-3. Restart your server or type `sm plugins load vehicles` into your server console
+3. Download the latest version of your game's vehicles (optional). [Here](https://gamebanana.com/mods/658462) the ones for Day of Defeat: Source
+4. Restart your server or type `sm plugins load vehicles` into your server console
 
 ## Usage
 
-The easiest way to spawn vehicles is using the `sm_vehicle` command.
+The easiest way to spawn vehicles is using the `sm_vehicle` command and selecting "Spawn a vehicle" in the menu.
 This requires vehicles to be added to the [vehicle configuration](/addons/sourcemod/configs/vehicles/vehicles.cfg).
+
+An automatic vehicles respawn system is present. A TXT file must be created in the server's "dod/resource" folder, with the name "your_map_name_vehicles.txt" where "your_map_name" is the name of the map for which you want to enable the automatic respawn. To create this file use the `sm_vehicle` command and select "Place a vehicle spawner here" in the menu; the file will be created and the respawner is placed where you are standing. Use again the "Place a vehicle spawner here" for each respawner you want to add. At the moment the system doesn't check for obstructions.
 
 If you have access to `ent_create`, you can spawn vehicle entities without having to add them to the configuration.
 The plugin automatically detects and hooks any vehicle spawned into the map.
@@ -66,22 +70,16 @@ the [Vehicle Scripts for Source](https://steamcommunity.com/sharedfiles/filedeta
 		"model"					"models/vehicles/example_vehicle.mdl"
 		"script"				"scripts/vehicles/example_vehicle.txt"
 		"type"					"car_wheels"
-		"soundscript"				"scripts/example_soundscript.txt"
+		"soundscript"			"scripts/example_soundscript.txt"
 		"skins"					"0,1,2"
 		"key_hint"				"#Hint_VehicleKeys_Car"
-		"lock_speed"				"10.0"
-		"is_passenger_visible"			"1"
-		"horn_sound"				"sounds/vehicles/example_horn.wav"
+		"lock_speed"			"10.0"
+		"is_passenger_visible"	"1"
+		"horn_sound"			"sounds/vehicles/example_horn.wav"
 		"downloads"
 		{
-			"0"	"models/vehicles/example_vehicle.dx80.vtx"
-			"1"	"models/vehicles/example_vehicle.dx90.vtx"
-			"2"	"models/vehicles/example_vehicle.mdl"
-			"3"	"models/vehicles/example_vehicle.phy"
-			"4"	"models/vehicles/example_vehicle.sw.vtx"
-			"5"	"models/vehicles/example_vehicle.vvd"
-			"6"	"materials/models/vehicles/example_vehicle.vmt"
-			"7"	"materials/models/vehicles/example_vehicle.vtf"
+			"0"	"materials/models/vehicles/example_vehicle.vmt"
+			"1"	"materials/models/vehicles/example_vehicle.vtf"
 		}
 	}
 }
