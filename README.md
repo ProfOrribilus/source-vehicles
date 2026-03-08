@@ -106,3 +106,10 @@ function properly in a multiplayer environment and can even cause client crashes
 Because of that, entry and exit animations on all vehicles are disabled by default and have to be manually enabled by
 setting `vehicle_enable_entry_exit_anims` to `1`. If you intend to use this plugin on a public server, it is **highly
 recommended** to keep the animations disabled.
+
+## Known issues
+
+1. MGs can't be deployed while being on or inside a car.
+2. Nades and rockets launching is disabled for car passengers to avoid some still unresolved glitch.
+3. Entering and exiting a vehicle could get the player looking to a different direction.
+4. Vehicles sounds sometimes keep looping even if you are not driving them or if they are despawned/destroyed.
