@@ -115,4 +115,4 @@ recommended** to keep the animations disabled.
 
 ## Credits
 
-I wish to thank the following people who helped me in testing this plugin: [Glubtasticon](https://steamcommunity.com/id/Thiagales), [DNA.styks](https://steamcommunity.com/id/DNA-styx), [TVoLk](https://steamcommunity.com/profiles/76561198334480736), [dNky](https://steamcommunity.com/profiles/76561198127634836), [SkOosH](https://steamcommunity.com/profiles/76561197975135063).
+I wish to thank the following people who helped me in testing this plugin: [Glubtasticon](https://steamcommunity.com/id/Thiagales), [DNA.styks](https://steamcommunity.com/id/DNA-styx), [TVoLk](https://steamcommunity.com/profiles/76561198334480736), [dNky](https://steamcommunity.com/profiles/76561198127634836), [SkOosH](https://steamcommunity.com/profiles/76561197975135063). And [Bauxite](https://github.com/bauxiteDYS) who helped me in making the plugin working for Windows servers (functions' signatures searching).
